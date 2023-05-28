@@ -1,7 +1,7 @@
 import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { chdir } from 'node:process';
-import { copy } from 'fs-extra';
+import fs from 'fs-extra';
 import { parse as parseYAML, stringify as stringifyYAML } from 'yaml';
 import templateJSON from './template/template.package.json' assert { type: 'json' };
 
@@ -18,8 +18,6 @@ export async function createPackage(packageName: string, packageDescription?: st
 
 	// Change to subdirectory
 	chdir(packageDir);
-
-	console.log(join(packageDir, 'src'));
 
 	// Create folder structure
 	await mkdir(join(packageDir, 'src'));
@@ -69,9 +67,23 @@ export async function createPackage(packageName: string, packageDescription?: st
 	// Move back to root
 	chdir('..');
 
-	// Copy default files over
+	// fs default files over
 
-	await copy(join(templateDir, 'default', 'tsconfig.json'), join(packageDir, 'src'));
-	await copy(join(templateDir, 'default', 'tsup.config.ts'), packageDir);
-	await copy(join(templateDir, 'default', 'tsconfig.eslint.json'), packageDir);
+	await fsFiles(join(templateDir, 'default'), packageDir);
+}
+
+async function fsFiles(sourceDir: string, destinationDir: string) {
+	// Crea la directory di destinazione se non esiste
+	await fs.ensureDir(destinationDir);
+
+	const files = await fs.readdir(sourceDir);
+
+	for (const file of files) {
+		// Escludi il file tsconfig.json
+		const sourcePath = join(sourceDir, file);
+		const destinationPath = join(file === 'tsconfig.json' ? join(destinationDir, 'src') : destinationDir, file);
+
+		// Copia e sovrascrivi i file
+		await fs.copy(sourcePath, destinationPath, { overwrite: true });
+	}
 }
