@@ -1,5 +1,5 @@
 {
-	"name": "@Redstars071/esbuild-plugins/{name}",
+	"name": "esbuild-plugins-{name}",
 	"version": "0.1.0",
 	"description": "",
 	"license": "MIT",
@@ -28,23 +28,12 @@
 		"url": "git+https://github.com/RedStars071/esbuild-plugins.git",
 		"directory": "packages/{name}"
 	},
-	"files": [
-		"dist/",
-		"!dist/.tsbuildinfo",
-		"./register.*"
-	],
+	"files": ["dist/", "!dist/.tsbuildinfo", "./register.*"],
 	"engines": {
 		"node": ">=v14.0.0",
 		"npm": ">=7.0.0"
 	},
-	"keywords": [
-        "esbuild",
-		"plugin",
-		"bot",
-		"typescript",
-		"ts",
-		"yarn"
-	],
+	"keywords": ["esbuild", "plugin", "bot", "typescript", "ts", "yarn"],
 	"bugs": {
 		"url": "https://github.com/RedStars071/esbuild-plugins/issues"
 	},

@@ -25,7 +25,7 @@ export async function createPackage(packageName: string, packageDescription?: st
 	const templateDir = join(process.cwd(), 'packages', 'create-package', 'src', 'template');
 
 	// Create files
-	await writeFile(join(packageDir, 'src', 'index.ts'), `console.log('Hello, from @Redstars071/esbuild-plugins/${packageName}');`);
+	await writeFile(join(packageDir, 'src', 'index.ts'), `console.log('Hello, from @Redstars071/esbuild-plugins-${packageName}');`);
 
 	const packageJSON = {
 		...templateJSON,
