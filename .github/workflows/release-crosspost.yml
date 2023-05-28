@@ -21,6 +21,6 @@ jobs:
         id: crosspost_action
         uses: kludge-cs/gitcord-release-changelogger@5592170408dc081d7cb6a74ce025911bd1fcb7c3 # renovate: tag=v3.0.0
         with:
-          webhook-url: ${{ secrets.RELEASE_WEBHOOK }}
+          #   webhook-url: ${{ secrets.RELEASE_WEBHOOK }}
           release-body: ${{ github.event.release.body }}
           release-name: ${{ steps.get_release_name.outputs.release_name }}

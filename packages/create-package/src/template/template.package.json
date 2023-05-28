@@ -1,0 +1,58 @@
+{
+	"name": "@Redstars071/esbuild-plugins/{name}",
+	"version": "0.1.0",
+	"description": "",
+	"license": "MIT",
+	"homepage": "https://github.com/RedStars071/esbuild-plugins/tree/main/packages/{name}",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"typings": "./dist/index.d.ts",
+	"exports": {
+		"types": "./dist/index.d.ts",
+		"import": "./dist/index.mjs",
+		"require": "./dist/index.js"
+	},
+	"scripts": {
+		"test": "vitest run",
+		"lint": "eslint src tests --ext ts --fix",
+		"build": "tsup",
+		"prepack": "yarn build",
+		"bump": "cliff-jumper",
+		"check-update": "cliff-jumper --dry-run"
+	},
+	"dependencies": {
+		"tslib": "^2.5.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/RedStars071/esbuild-plugins.git",
+		"directory": "packages/{name}"
+	},
+	"files": [
+		"dist/",
+		"!dist/.tsbuildinfo",
+		"./register.*"
+	],
+	"engines": {
+		"node": ">=v14.0.0",
+		"npm": ">=7.0.0"
+	},
+	"keywords": [
+        "esbuild",
+		"plugin",
+		"bot",
+		"typescript",
+		"ts",
+		"yarn"
+	],
+	"bugs": {
+		"url": "https://github.com/RedStars071/esbuild-plugins/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"devDependencies": {
+		"@favware/cliff-jumper": "^2.0.0",
+		"typescript": "^5.0.4"
+	}
+}
